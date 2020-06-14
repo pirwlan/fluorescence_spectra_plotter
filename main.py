@@ -1,37 +1,30 @@
 import argparse
 import helper as h
-import matplotlib.pyplot as plt
 import os
-import pandas as pd
 
 
 def make_plots(args):
 
-    df_ex, df_em = h.read_files(args)
-    df_ex, df_em = h.subtract_blank([df_ex, df_em])
-    print(df_em)
+    data_dict = h.read_files(args)
+    data_dict = h.subtract_blank(data_dict)
+    h.plotting(data_dict)
 
 
 if __name__ == '__main__':
 
-    DATA_PATH = os.path.join(os.getcwd(), 'data')
-    PLOT_PATH = os.path.join(os.getcwd(), 'plots')
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-ex", "--excitation_file",
+                    type=str, required=True,
+                   help="path to excitation file")
 
-    h.create_folder([PLOT_PATH])
+    ap.add_argument("-em", "--emission_file",
+                    type=str, required=True,
+                    help="path to emission file")
 
-    # ap = argparse.ArgumentParser()
-    # ap.add_argument("-ex", "--excitation_file",
-    #                 type=str, required=True,
-    #                 help="path to input file")
-    #
-    # ap.add_argument("-em", "--emission_file",
-    #                 type=str, required=True,
-    #                 help="path to input file")
-    #
-    # args = vars(ap.parse_args())
-    args = dict()
-    args['excitation_file'] = '03_ex420-490_em530.csv'
-    args['emission_file'] = '01_ex450_em472-574.csv'
-    args['separator'] = ';'
+    ap.add_argument("-s", "--separator",
+                    type=str, default=',',
+                    help="separator of the csv file")
+
+    args = vars(ap.parse_args())
     make_plots(args)
 
