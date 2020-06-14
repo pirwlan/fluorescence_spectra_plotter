@@ -5,8 +5,6 @@ import os
 import pandas as pd
 
 
-
-
 def create_folder(folders: list):
     """
     Creates folder indicated by path.
@@ -33,12 +31,12 @@ def read_files(args: dict) -> dict:
     """
     df_dict = dict()
     df_dict['excitation_spectra'] = pd.read_csv(args['excitation_file'],
-                                                index_col='wavelength',
+                                                index_col=0,
                                                 sep=args['separator'])
     df_dict['excitation_spectra'].name = 'excitation'
 
     df_dict['emission_spectra'] = pd.read_csv(args['emission_file'],
-                                              index_col='wavelength',
+                                              index_col=0,
                                               sep=args['separator'])
     df_dict['emission_spectra'].name = 'emission'
 
@@ -205,4 +203,3 @@ def plotting(dfs: dict):
 
         plt.figure(figsize=(8, 5))
         plt.clf()
-
