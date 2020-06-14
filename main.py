@@ -15,7 +15,7 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument("-ex", "--excitation_file",
                     type=str, required=True,
-                   help="path to excitation file")
+                    help="path to excitation file")
 
     ap.add_argument("-em", "--emission_file",
                     type=str, required=True,

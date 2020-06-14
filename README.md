@@ -1,5 +1,5 @@
 # Fluorescence spectra plotter
-![spectra](example\2020-06-14 21:06:58_protein_3.png 'Spectra')
+![spectra](example/2020-06-14_21:06:58_protein_3.png 'Spectra')
 
 
 This repository can be used to automatically create fluorescent specta plots from spectrometer data in csv format. 
